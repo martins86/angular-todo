@@ -1,8 +1,13 @@
 <h1>{{ title }}</h1>
 <ul>
     <li *ngFor="let todo of todos"> 
-        {{ todo.title }} 
-        | <button>Concluir</button> 
-        | <button>Remover</button>
+        {{ todo.id}} - {{ todo.title }} 
+        <ng-template [ngIf]="!todo.done" [ngIfElse]="refazer">
+            | <button (click)="checkedUnchecked(todo)">Concluir</button>
+        </ng-template> 
+        <ng-template #refazer>
+            | <button (click)="checkedUnchecked(todo)">Refazer</button>
+        </ng-template> 
+        | <button (click)="remove(todo)">Remover</button>
     </li>
 </ul>
