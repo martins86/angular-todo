@@ -87,9 +87,12 @@ export class AppComponent {
   load() {
     // Le a string no local storage
     const data = localStorage.getItem('todos');
-    
-    // Faz o parse e armazena em todos.
-    this.todos = JSON.parse(data);
+    if(data) {
+      // Faz o parse e armazena em todos.
+      this.todos = JSON.parse(data);
+    } else {
+      this.todos = [];
+    }
   }
   
 }
