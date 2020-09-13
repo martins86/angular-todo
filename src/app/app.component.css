@@ -1,0 +1,117 @@
+.title { 
+    font-family: 'Grandstander', cursive;
+    color: #ffffff;
+    font-size: 4em;
+    text-shadow: 5px 4px rgba(0, 0, 0, 60%);
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+ul > p > small { 
+    color: #eb2b5c;
+    font-weight: 600;
+}
+
+li { 
+    margin: 15px;
+    padding: 10px;
+    text-align: left;
+    font-size: 1em;
+    font-style: italic;
+    border-bottom: 1px solid rgba(233, 30, 99, 56%);
+}
+
+li > button { 
+    border: none;
+    background-color: #ffffff;
+    font-size: 1em;
+    float: right;
+    opacity: 0.6;
+    transition: opacity 1s;
+}
+
+li > button:hover { 
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.fa, .far, .fas {
+    cursor: pointer;
+}
+
+i.fas.fa-check-circle {
+    color: #19d821;
+    cursor: pointer;
+}
+
+i.fas.fa-trash:hover {
+    color: #ff0000;
+}
+
+.form { 
+    padding: 12px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 1em;
+    font-weight: 600;
+    color: #eb2d5a;
+}
+
+input { 
+    width: -webkit-fill-available;
+    line-height: 38px;
+    text-indent: 15px;
+    font-size: 1.1em;
+    display: block;
+    border: 1px solid rgba(233, 30, 99, 56%);
+    border-radius: 30px;
+    color: #eb2d5a;
+}
+
+.danger { 
+    padding: 12px 12px 0;
+    display: block;
+    margin: 12px 0;
+    color: #ff0000;
+    font-size: 0.9em;
+}
+
+
+.btn-primary { 
+    background-color: #d83030;
+    border: none;
+    margin: 15px;
+    padding: 12px 35px;
+    color: #ffffff;
+    border-radius: 30px;
+    font-size: 1em;
+}
+
+.btn-add { 
+    background-color: #e91e63;
+    margin: 25px 0 0;
+}
+
+.btn-cancel { 
+    background-color: #ff1100;
+    margin: 25px 0 0;
+}
+
+.card-box {
+    margin: 15px;
+    padding: 15px;
+    list-style: none;
+    background-color: #ffffff;
+    border-radius: 10px;
+    -webkit-box-shadow: 3px 4px 14px rgba(233, 30, 99, 62%);
+    -moz-box-shadow: 3px 4px 14px rgba(233, 30, 99, 62%);
+    box-shadow: 3px 4px 14px rgba(233, 30, 99, 62%);
+}

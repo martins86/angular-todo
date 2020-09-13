@@ -1,32 +1,52 @@
-<h1>{{ title }}</h1>
+<h1 class="title">{{ title }}</h1>
 
-<form [formGroup]="form">
-    <fieldset>
+<div class="card-box" *ngIf="mode=='list'">
+    <ul>
+        <p *ngIf="todos.length==0">
+            <small>Não a registros de tarefas para hoje!</small>
+        </p>
+        <li *ngFor="let todo of todos"> 
+            {{ todo.title }}
+            <button (click)="remove(todo)">
+                <i class="fas fa-trash"></i>
+            </button>
+            <ng-template [ngIf]="!todo.done" [ngIfElse]="refazer">
+                <button title="Concluir esta tarefa" (click)="checkedUnchecked(todo)">
+                    <i class="far fa-circle"></i>
+                </button>
+            </ng-template> 
+            <ng-template #refazer>
+                <button title="Refazer esta tarefa" (click)="checkedUnchecked(todo)">
+                    <i class="fas fa-check-circle"></i>
+                </button>
+            </ng-template> 
+        </li>
+    </ul>
+</div>
+
+<div class="card-box form" *ngIf="mode=='add'">
+    <form [formGroup]="form">
         <label> Tarefa: </label>
         <input type="text"
             placeholder="Titulo da Tarefa"
             maxlength="60"
             formControlName="title">
-            <small *ngIf="form.controls.title.invalid &&
+            <small class="danger" *ngIf="form.controls.title.invalid &&
                             !form.controls.title.pristine">
-                Este campo deve conter entre 3 e 60 caracteres.
+                *Este campo deve conter entre 3 e 60 caracteres.
             </small>
-        <button [disabled]="form.invalid" (click)="add()">Salvar</button>
-    </fieldset>
-</form>
+        <button class="btn-primary" [disabled]="form.invalid" (click)="add()"><i class="far fa-save"></i> Salvar</button>
+    </form>
+</div>
 
-<ul>
-    <p *ngIf="todos.length==0">
-        <small>Não a registros de tarefas para hoje!</small>
-    </p>
-    <li *ngFor="let todo of todos"> 
-        {{ todo.id}} - {{ todo.title }} 
-        <ng-template [ngIf]="!todo.done" [ngIfElse]="refazer">
-            | <button (click)="checkedUnchecked(todo)">Concluir</button>
-        </ng-template> 
-        <ng-template #refazer>
-            | <button (click)="checkedUnchecked(todo)">Refazer</button>
-        </ng-template> 
-        | <button (click)="remove(todo)">Remover</button>
-    </li>
-</ul>
+<button class="btn-primary btn-add" 
+    (click)="changeMode('add')" *ngIf="mode=='list'">
+    <i class="fas fa-plus"></i>
+    Adicionar
+</button>
+
+<button class="btn-primary btn-cancel" 
+    (click)="changeMode('list')" *ngIf="mode=='add'">
+    <i class="fas fa-times"></i>
+    Cancelar
+</button>

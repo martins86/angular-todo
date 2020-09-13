@@ -9,6 +9,8 @@ import { Todo } from './../models/todo.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  // Cria um estado mode.
+  public mode = 'list';
   // Cria uma lista todo vazia.
   public todos: Todo[] = [];
   // Titulo da tela.
@@ -82,6 +84,9 @@ export class AppComponent {
     
     // Guarda no local storage com chave todo e valor o json.
     localStorage.setItem('todos', data);
+    
+    // Exibe a lista de tarefas.
+    this.mode = 'list';
   }
   
   load() {
@@ -95,4 +100,9 @@ export class AppComponent {
     }
   }
   
+  changeMode(mode: string) {
+    // Recebe um estado mode.
+    this.mode = mode;
+  }
+
 }
